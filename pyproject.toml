@@ -7,7 +7,7 @@ name = "q-investment"
 version = "0.1.0"
 description = "A Python class implementing the Abel-Hayashi 'Marginal Q' model of investment"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.8,<3.11"
 license = {file = "LICENSE"}
 authors = [
     {name = "Christopher D. Carroll"},
@@ -21,8 +21,6 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Economics",
 ]
 

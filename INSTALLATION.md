@@ -4,8 +4,16 @@ This guide covers how to install and set up the Q-Investment package using moder
 
 ## Prerequisites
 
-- Python 3.8 or higher
+- **Python 3.8, 3.9, or 3.10** (not 3.11 or 3.12 - see note below)
 - `uv` (recommended) or `pip`
+
+### Python Version Note
+
+This project requires **Python 3.10 or earlier** due to dependencies on older packages:
+- `numba 0.56.4` (needed for Dolo) was released before Python 3.11
+- `numpy <1.25` is required for numba compatibility
+
+**Recommended:** Use Python 3.10 for best compatibility.
 
 ## Installing uv (Recommended)
 
@@ -32,8 +40,12 @@ brew install uv
 git clone https://github.com/llorracc/Q-Investment.git
 cd Q-Investment
 
-# Create a virtual environment
-uv venv
+# Create a virtual environment with Python 3.10
+# Option 1: Let uv find Python 3.10
+uv venv --python 3.10
+
+# Option 2: Specify exact Python path
+# uv venv --python /path/to/python3.10
 
 # Install dolo first (bypassing its conflicting metadata)
 uv pip install --no-deps dolo==0.4.9.12
@@ -41,6 +53,8 @@ uv pip install --no-deps dolo==0.4.9.12
 # Install everything else
 uv pip install -e ".[dolo,dev]"
 ```
+
+**Note:** If you get Python 3.12 by default, explicitly specify `--python 3.10` when creating the venv.
 
 #### Basic Installation (Qmod only)
 
