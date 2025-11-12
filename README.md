@@ -6,18 +6,16 @@ This implementation follows Professor Christopher D. Carroll's [lecture notes](h
 
 ## Installation
 
-**Requirements:** Python 3.8-3.10 (not 3.11 or 3.12 due to old dependencies)
+**Requirements:** Python 3.8-3.10 and [uv](https://docs.astral.sh/uv/)
 
-For full installation instructions, see [INSTALLATION.md](INSTALLATION.md).
-
-Quick start with `uv`:
 ```bash
 git clone https://github.com/llorracc/Q-Investment.git
 cd Q-Investment
-uv venv --python 3.10                    # Use Python 3.10
-uv pip install --no-deps dolo==0.4.9.12  # Dolo has conflicting metadata
-uv pip install -e ".[dolo,dev]"          # Install everything else
+./INSTALL.sh
+source .venv/bin/activate
 ```
+
+That's it! See [INSTALLATION.md](INSTALLATION.md) for troubleshooting.
 
 ### 1. Qmod
 
