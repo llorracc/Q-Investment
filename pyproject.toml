@@ -27,24 +27,25 @@ classifiers = [
 ]
 
 dependencies = [
-    "numpy==1.23.5",
-    "scipy==1.13.1",
-    "matplotlib==3.9.0",
+    "numpy>=1.23.0,<1.25",
+    "scipy>=1.7.0",
+    "matplotlib>=3.3.0",
 ]
 
 [project.optional-dependencies]
-# Dolo support - all versions pinned to tested configuration
+# Dolo dependencies (install dolo itself separately with --no-deps)
+# Dolo's metadata has conflicts but these versions work at runtime
+# Install with: uv pip install --no-deps dolo==0.4.9.12 && uv pip install -e ".[dolo]"
 dolo = [
-    "dolo==0.4.9.12",
-    "pandas==1.5.3",
-    "numba==0.56.4",
-    "quantecon==0.10.1",
-    "xarray==0.15.1",
-    "ruamel.yaml==0.16.13",
-    "multipledispatch==0.6.0",
-    "ipython==7.34.0",
-    "dolang==0.0.10",
-    "interpolation==2.2.7",
+    "pandas>=1.5.0,<2.0",
+    "numba>=0.56.0,<0.57",
+    "quantecon>=0.10.0",
+    "xarray>=0.15.0,<0.16",
+    "ruamel.yaml>=0.16.10,<0.17",
+    "multipledispatch>=0.6.0,<0.7",
+    "ipython>=7.34.0,<8.0",
+    "dolang>=0.0.10,<0.0.11",
+    "interpolation>=2.2.0",
 ]
 dev = [
     "pytest==8.3.5",

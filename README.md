@@ -6,14 +6,15 @@ This implementation follows Professor Christopher D. Carroll's [lecture notes](h
 
 ## Installation
 
-For installation instructions, see [INSTALLATION.md](INSTALLATION.md).
+For full installation instructions, see [INSTALLATION.md](INSTALLATION.md).
 
 Quick start with `uv`:
 ```bash
 git clone https://github.com/llorracc/Q-Investment.git
 cd Q-Investment
 uv venv
-uv pip install -e ".[dev]"
+uv pip install --no-deps dolo==0.4.9.12  # Dolo has conflicting metadata
+uv pip install -e ".[dolo,dev]"          # Install everything else
 ```
 
 ### 1. Qmod

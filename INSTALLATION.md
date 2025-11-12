@@ -25,7 +25,7 @@ brew install uv
 
 ### Option 1: Using uv (Recommended)
 
-#### Basic Installation (Qmod only)
+#### Quick Start - Everything (Qmod + Dolo + Dev Tools)
 
 ```bash
 # Clone the repository
@@ -35,13 +35,26 @@ cd Q-Investment
 # Create a virtual environment
 uv venv
 
+# Install dolo first (bypassing its conflicting metadata)
+uv pip install --no-deps dolo==0.4.9.12
+
+# Install everything else
+uv pip install -e ".[dolo,dev]"
+```
+
+#### Basic Installation (Qmod only)
+
+```bash
+# Create a virtual environment
+uv venv
+
 # Install the package in editable mode
 uv pip install -e .
 ```
 
-#### With Development Tools
+#### With Development Tools Only
 
-To include pytest, jupyter, and other development tools:
+To include pytest, jupyter, and other development tools (without Dolo):
 
 ```bash
 uv pip install -e ".[dev]"
@@ -52,10 +65,14 @@ uv pip install -e ".[dev]"
 To include Dolo support (required for 4 out of 5 example notebooks):
 
 ```bash
+# Install dolo without checking its (conflicting) dependencies
+uv pip install --no-deps dolo==0.4.9.12
+
+# Then install the working dependencies
 uv pip install -e ".[dolo]"
 ```
 
-This installs the tested and working configuration for Dolo 0.4.9.12 with all compatible dependencies.
+**Why two steps?** Dolo's package metadata declares dependency versions (e.g., `quantecon<0.5`) that conflict with Python 3.10 requirements, but the newer versions we install actually work fine at runtime.
 
 ### Option 2: Using pip
 
