@@ -5,8 +5,10 @@
 ## Quick Installation
 
 **Requirements:** 
-- Python 3.8, 3.9, or 3.10 (NOT 3.11 or 3.12)
 - [uv](https://docs.astral.sh/uv/) package manager
+- Internet connection (for automatic Python download if needed)
+
+**Note:** You don't need to pre-install Python! The install script will automatically download Python 3.10 if it's not found on your system. The virtual environment will use Python 3.10 (which is compatible with Python 3.8-3.10 requirements).
 
 ### Install uv
 
@@ -57,9 +59,17 @@ INSTALL.bat
 ```
 
 The script will:
-1. Create a virtual environment with Python 3.10
-2. Install dolo (bypassing its conflicting metadata)
-3. Install Q-Investment with all dependencies
+1. **Download and install Python 3.10** into uv's managed Python directory (ensures isolation and reproducibility)
+2. Create a virtual environment using the uv-managed Python 3.10 (not system Python)
+3. Install dolo (bypassing its conflicting metadata)
+4. Install Q-Investment with all dependencies
+
+**Important:** The script always installs Python 3.10 via uv, even if you already have Python 3.10 elsewhere on your system. This ensures:
+- **Reproducibility** - Same Python version for all users
+- **Isolation** - Virtual environment doesn't depend on system Python
+- **Consistency** - Works the same way on all systems
+
+You don't need to manually install Python first - the script handles everything!
 
 ### Verify Installation
 

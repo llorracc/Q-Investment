@@ -16,9 +16,15 @@ if ! command -v uv &> /dev/null; then
     exit 1
 fi
 
-# Create virtual environment with Python 3.10
+# Ensure Python 3.10 is installed in uv's managed Python directory
+# This ensures reproducible, isolated installations regardless of system Python
+echo "Ensuring Python 3.10 is installed (uv-managed)..."
+uv python install 3.10
+
+# Create virtual environment with uv-managed Python 3.10
+# --managed-python forces use of uv's managed Python (not system Python)
 echo "Creating virtual environment with Python 3.10..."
-uv venv --python 3.10
+uv venv --python 3.10 --managed-python
 
 # Install dolo without dependency checking (it has conflicting metadata)
 echo "Installing dolo (bypassing conflicting metadata)..."

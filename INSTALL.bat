@@ -15,12 +15,22 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-REM Create virtual environment with Python 3.10
+REM Ensure Python 3.10 is installed in uv's managed Python directory
+REM This ensures reproducible, isolated installations regardless of system Python
+echo Ensuring Python 3.10 is installed (uv-managed)...
+uv python install 3.10
+if %errorlevel% neq 0 (
+    echo Error: Failed to install Python 3.10.
+    echo Check your internet connection.
+    exit /b 1
+)
+
+REM Create virtual environment with uv-managed Python 3.10
+REM --managed-python forces use of uv's managed Python (not system Python)
 echo Creating virtual environment with Python 3.10...
-uv venv --python 3.10
+uv venv --python 3.10 --managed-python
 if %errorlevel% neq 0 (
     echo Error: Failed to create virtual environment.
-    echo Make sure Python 3.10 is installed.
     exit /b 1
 )
 
