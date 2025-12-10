@@ -4,10 +4,13 @@
 
 This implementation follows Professor Christopher D. Carroll's [lecture notes](http://www.econ2.jhu.edu/people/ccarroll/public/lecturenotes/Investment/qModel/).
 
+**📑 New here?** See **[INDEX.md](INDEX.md)** for a complete guide to repository contents and how to accomplish common tasks.
+
 ## Installation
 
 **Requirements:** Python 3.8-3.10 and [uv](https://docs.astral.sh/uv/)
 
+**Linux/macOS:**
 ```bash
 git clone https://github.com/llorracc/Q-Investment.git
 cd Q-Investment
@@ -15,7 +18,23 @@ cd Q-Investment
 source .venv/bin/activate
 ```
 
-That's it! See [INSTALLATION.md](INSTALLATION.md) for troubleshooting.
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/llorracc/Q-Investment.git
+cd Q-Investment
+.\INSTALL.ps1
+.venv\Scripts\Activate.ps1
+```
+
+**Windows (Command Prompt):**
+```cmd
+git clone https://github.com/llorracc/Q-Investment.git
+cd Q-Investment
+INSTALL.bat
+.venv\Scripts\activate
+```
+
+See [INSTALLATION.md](INSTALLATION.md) for troubleshooting.
 
 ### 1. Qmod
 

@@ -1,5 +1,7 @@
 # Installation Guide for Q-Investment
 
+**📑 Looking for something else?** See **[INDEX.md](INDEX.md)** for complete repository navigation.
+
 ## Quick Installation
 
 **Requirements:** 
@@ -8,25 +10,50 @@
 
 ### Install uv
 
-If you don't have uv installed:
-
+**Linux/macOS:**
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-Or on macOS with Homebrew:
-
+**macOS (Homebrew):**
 ```bash
 brew install uv
 ```
 
+**Windows (PowerShell):**
+```powershell
+irm https://astral.sh/uv/install.ps1 | iex
+```
+
+**Windows (using Python):**
+```cmd
+pip install uv
+```
+
 ### Install Q-Investment
 
+**Linux/macOS:**
 ```bash
 git clone https://github.com/llorracc/Q-Investment.git
 cd Q-Investment
 ./INSTALL.sh
 source .venv/bin/activate
+```
+
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/llorracc/Q-Investment.git
+cd Q-Investment
+.\INSTALL.ps1
+.venv\Scripts\Activate.ps1
+```
+
+**Windows (Command Prompt):**
+```cmd
+git clone https://github.com/llorracc/Q-Investment.git
+cd Q-Investment
+INSTALL.bat
+.venv\Scripts\activate
 ```
 
 The script will:
@@ -117,5 +144,6 @@ Dolo's package metadata declares `quantecon<0.5` but Python 3.10 requires `quant
 If you encounter issues:
 1. Check that you're using Python 3.8-3.10
 2. Verify uv is installed: `uv --version`
-3. Try the manual installation steps above
-4. Check for error messages about missing system dependencies
+3. **If dolo import hangs:** See [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+4. Try the manual installation steps above
+5. Run `./DEBUG.sh` to diagnose the problem

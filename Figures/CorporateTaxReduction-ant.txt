@@ -1,22 +1,11 @@
 k vs
-Transition path
-Change takes effect
-Pre-change k = 0
-Pre-change = 0
-Pre-change stable arm
-Post-change k = 0
-Post-change = 0
-Post-change stable arm
-
-1.2
-1.1
-1.0
-0.9
-0.8
 
 k vs q
 
-1.3
+1.0
+0.9
+0.8
+0.7
 
 Transition path
 Change takes effect
@@ -27,24 +16,25 @@ Post-change k = 0
 Post-change q = 0
 Post-change stable arm
 
-1.2
 1.1
+1.0
 
 q
 
-1.3
+Transition path
+Change takes effect
+Pre-change k = 0
+Pre-change = 0
+Pre-change stable arm
+Post-change k = 0
+Post-change = 0
+Post-change stable arm
 
-1.0
+1.1
+
 0.9
 0.8
-
 0.7
-
-0.7
-
-0.6
-
-0.6
 
 k
 
@@ -56,7 +46,7 @@ Marginal value dynamics
 Pre-change *
 Post-change *
 
-1.25
+1.10
 
 4.0
 3.5
@@ -68,10 +58,10 @@ Post-change k *
 
 t
 
-1.20
-1.15
-1.10
-1.05
+1.08
+1.06
+1.04
+1.02
 
 2.5
 
@@ -85,20 +75,21 @@ t
 
 Investment dynamics
 
+0.6
+
 q dynamics
 i=0
 
-0.6
-
 q=1
 
-1.25
+1.10
 
 0.5
 
-1.20
+1.08
 
 0.4
+0.3
 
 qt
 
@@ -106,17 +97,17 @@ kt
 
 it
 
-Unanticipated corporate tax cut ( 0.40 -> 0.05)
+Corporate tax cut announced ( 0.40 -> 0.05), effect at t=5
 
-0.3
-
-1.15
-1.10
+1.06
 
 0.2
+
+1.04
+
 0.1
 
-1.05
+1.02
 
 0.0
 
