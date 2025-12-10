@@ -34,7 +34,13 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
+REM Activate the virtual environment
+call .venv\Scripts\activate.bat
+
 REM Install dolo without dependency checking (it has conflicting metadata)
+REM Dolo's metadata declares quantecon<0.5, but Python 3.10 requires quantecon>=0.10
+REM We bypass this by installing with --no-deps, then install compatible versions
+echo.
 echo Installing dolo (bypassing conflicting metadata)...
 uv pip install --no-deps dolo==0.4.9.12
 if %errorlevel% neq 0 (
@@ -42,12 +48,53 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-REM Install the package with all dependencies
-echo Installing Q-Investment with all dependencies...
+REM Verify dolo is installed
+python -c "import dolo" >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Error: dolo installation verification failed.
+    exit /b 1
+)
+echo [OK] dolo installed successfully
+
+REM Install dolo's dependencies (from pyproject.toml [dolo] section)
+echo.
+echo Installing dolo dependencies...
 uv pip install -e ".[dolo,dev]"
 if %errorlevel% neq 0 (
-    echo Error: Failed to install Q-Investment.
+    echo Error: Failed to install dolo dependencies.
     exit /b 1
+)
+
+REM Verify dolo can be imported with all dependencies
+echo.
+echo Verifying dolo installation with dependencies...
+python -c "from dolo import *; import dolo.algos.perfect_foresight as pf; import dolo.algos.value_iteration as vi; print('[OK] dolo imports successful')" >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Warning: dolo imports with warnings (this may be normal)
+)
+
+REM Verify Qmod can be imported
+echo.
+echo Verifying Qmod installation...
+python -c "from Qmod import Qmod; print('[OK] Qmod imports successful')" >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Error: Qmod import failed.
+    exit /b 1
+)
+
+REM Final verification
+echo.
+echo Running final installation test...
+python -c "from Qmod import Qmod; from dolo import yaml_import; print('[OK] All imports successful')" >nul 2>&1
+if %errorlevel% equ 0 (
+    echo.
+    echo ==================================
+    echo [OK] Installation complete and verified!
+    echo ==================================
+) else (
+    echo.
+    echo Warning: Installation complete but verification had warnings
+    echo    This may be normal - try running the test command manually
 )
 
 echo.

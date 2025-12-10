@@ -31,9 +31,14 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Dolo dependencies (install dolo itself separately with --no-deps)
-# Dolo's metadata has conflicts but these versions work at runtime
-# Install with: uv pip install --no-deps dolo==0.4.9.12 && uv pip install -e ".[dolo]"
+# IMPORTANT: Dolo itself is NOT listed here due to metadata conflicts.
+# Dolo's package metadata declares quantecon<0.5, but Python 3.10 requires quantecon>=0.10.
+# 
+# Installation process (handled by INSTALL.sh):
+#   1. Install dolo with --no-deps to bypass metadata: uv pip install --no-deps dolo==0.4.9.12
+#   2. Install dolo's dependencies (listed below): uv pip install -e ".[dolo]"
+#
+# These dependency versions work at runtime despite the metadata conflict.
 dolo = [
     "pandas>=1.5.0,<2.0",
     "numba>=0.56.0,<0.57",
